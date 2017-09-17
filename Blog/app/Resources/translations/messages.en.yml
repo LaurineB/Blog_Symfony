@@ -1,0 +1,38 @@
+blogpost.create.title: 'Write a post'
+blogpost.create.post.title: Title
+blogpost.create.post.content: Content
+blogpost.create.post.url_flickr: Html integration url from Flickr.com
+blogpost.create.post.cover: Cover image
+blogpost.create.post.submit: Send
+blogpost.list.title: 'Blogpost list'
+blogpost.list.published: 'Published'
+blogpost.list.notPublished: 'Not published'
+blogpost.list.post.empty: 'There is no post here'
+login.username: Username
+login.password: Password
+login.login: Login
+blogpost.list.post.title: Title
+blogpost.list.post.date: Date
+blogpost.list.post.extract: Content
+header.title: Crazy photographer
+header.introText: Travel | Escape yourself | Immortalize
+blogpost.show.title: See blogpost
+blogpost.show.notpublished: Not published
+blogpost.show.publish: Published
+blogpost.show.publishedAt: Published at
+blogpost.show.comment.writeAComment: Write a comment
+blogpost.show.comment.empty: No comments
+comment.title: Title
+homepage.title: Home
+homepage.post.comment.number: %count% comment|%count% comments
+homepage.post.readmore: Read more
+homepage.post.empty: No comments
+menu.home: Home
+menu.posts: Posts
+menu.writePost: Write a post
+contact.title: Contact
+contact.subtitle: A place to recommend?
+contact.contactme: Contact me
+comment.create.comment.title: Title
+comment.create.comment.content: Content
+comment.create.comment.submit: Send

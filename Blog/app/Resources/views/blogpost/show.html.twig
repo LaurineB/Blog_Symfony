@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block body %}
+    <h3 style="text-align: left">{{ post.published_at|date('d/m/Y H:i', "Europe/Paris") }}</h3>
+    {% if is_granted('ROLE_ADMIN') %}
+        <h1>
+            {% if post.published_at is null %}
+                <span>{{ 'blogpost.show.notpublished'|trans }}</span>
+                <a href="{{ path('postsPublish',{'id':post.id}) }}"
+                   class="btn btn-success">{{ 'blogpost.show.publish'|trans }}</a>
+            {% endif %}
+        </h1>
+    {% endif %}
+
+    <h1 style="text-align: center">{{ post.title }}</h1>
+    {% if post.cover is not null %}
+        <div class="col-xs-12">
+            <img class="img-cover" src="{{ asset('img/cover/' ~ post.cover) }}"/>
+        </div>
+    {% endif %}
+
+    <div class="col-xs-12 col-lg-10 col-lg-offset-1 ">
+        <div class="panel-body">
+            <p>{{ post.content }}</p>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-8 col-md-offset-2" style="margin-top: 30px;margin-bottom: 40px;">
+    {% if post.url_flickr is not null %}
+         {{ post.url_flickr|raw }}
+    {% endif %}
+    </div>
+
+    <div class="container">
+        <hr width="90%" align="center" color="black">
+
+        <h3>{{ 'blogpost.show.comment.writeAComment'|trans }}</h3>
+        <div class="col-sm-12 col-md-8 col-lg-6">
+            {{ form(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
+        </div>
+        <div class="col-xs-12 col-md-4 col-lg-6">
+            {% for comment in comments %}
+
+                <h3>{{ comment.title }}</h3>
+                <p>
+                    {% if comment.published_at is defined %}
+                        {{ comment.published_at|date('d/m/Y H:i', "Europe/Paris") }}
+                    {% endif %}
+                </p>
+                <p>{{ comment.content }}</p>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('commentDelete',{'id':comment.id}) }}" class="btn btn-danger"><span
+                                class="glyphicon glyphicon-trash"></a>
+                {% endif %}
+            {% else %}
+                <p>{{ 'blogpost.show.comment.empty'|trans }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    </div>
+{% endblock %}

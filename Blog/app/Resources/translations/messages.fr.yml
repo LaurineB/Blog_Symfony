@@ -1,0 +1,38 @@
+login.login: Connexion
+login.username: Identifiant
+login.password: 'Mot de passe'
+header.title: 'Crazy photographer'
+header.introText: 'Voyager | S''évader | Immortaliser'
+blogpost.create.title: 'Créer un article'
+blogpost.create.post.title: Titre
+blogpost.create.post.content: Contenu
+blogpost.create.post.url_flickr: Url d'intégration du html fourni par Flickr
+blogpost.create.post.cover: Image de couverture
+blogpost.create.post.submit: Envoyer
+blogpost.list.title: Articles
+blogpost.list.published: Publié
+blogpost.list.notPublished: 'Non publié'
+blogpost.list.post.title: Titre
+blogpost.list.post.date: Date
+blogpost.list.post.extract: Contenu
+blogpost.list.post.empty: 'Pas d''article'
+blogpost.show.title: Titre
+blogpost.show.notpublished: 'Non publié'
+blogpost.show.publish: Publier
+blogpost.show.publishedAt: 'Publié le'
+blogpost.show.comment.writeAComment: 'Ecrire un commentaire'
+blogpost.show.comment.empty: 'Pas de commentaire'
+comment.title: Titre
+homepage.title: Accueil
+homepage.post.comment.number: '%count% commentaire|%count% commentaires'
+homepage.post.readmore: 'Lire la suite'
+homepage.post.empty: 'Pas d''article'
+menu.home: Accueil
+menu.posts: Articles
+menu.writePost: 'Ecrire un article'
+contact.title: 'Formulaire de contact'
+contact.subtitle: 'Un endroit à me conseiller?'
+contact.contactme: Contactez-moi!
+comment.create.comment.title: Titre
+comment.create.comment.content: Contenu
+comment.create.comment.submit: Envoyer

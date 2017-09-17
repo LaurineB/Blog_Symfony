@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr"
+              crossorigin="anonymous">
+        <link href="{{ asset("css/style.css") }}" rel="stylesheet">
+    {% endblock %}
+    <link href="{{ asset("vendor/font-awesome/css/font-awesome.min.css") }}" rel="stylesheet" type="text/css">
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <!--Javascript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="margin: 0">
+
+<!-- Intro Header -->
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="brand-heading">{{ 'header.title'|trans }}</h1>
+                    <p class="intro-text">{{ 'header.introText'|trans }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% if is_granted('ROLE_ADMIN') %}
+    {% block menu %}{{ include('element/_menu.html.twig') }}{% endblock %}
+{% endif %}
+<div class="col-xs-10 col-xs-offset-1">
+    {% for message in app.session.flashbag.get('success') %}
+        <div class="alert alert-success alert-dismissible">
+            <p> {{ message }}</p>
+        </div>
+    {% endfor %}
+
+    {% for message in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger alert-dismissible">
+            <p> {{ message }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<section class="main">
+    <div class="container">
+            {% block body %}{% endblock %}
+    </div>
+</section>
+
+
+{% block contact %} {% endblock %}
+
+<!-- Footer -->
+<footer>
+    <div class="container text-center">
+        <p>Copyright &copy; Laurine Baillet 2017</p>
+        {% if app.user %}
+            <p><a href="{{ path('logout') }}" class="btn btn-danger">Logout</a></p>
+        {% else %}
+            <p><a href="{{ path('login') }}" class="btn btn-success">Login</a></p>
+        {% endif %}
+    </div>
+</footer>
+
+{% block javascripts %}{{ include('element/_javascript.html.twig') }}{% endblock %}
+</body>
+</html>

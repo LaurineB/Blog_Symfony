@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'blogpost.create.title'|trans }}
+    {% endblock %}
+
+    {% block body %}
+
+    <h1>{{ 'blogpost.create.title'|trans }}</h1>
+    <div class="col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+    {{ form(form, {'attr' : {'novalidate' : 'novalidate'}}) }}
+    </div>
+
+{% endblock %}

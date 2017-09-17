@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ 'blogpost.list.title'|trans }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="block-tab">
+            <a href="#published" data-toggle="tab" class="btn btn-success">{{ 'blogpost.list.published'|trans }}</a>
+            <a href="#notpublished" data-toggle="tab" class="btn btn-primary">{{ 'blogpost.list.notPublished'|trans }}</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+
+            <div class="tab-content">
+
+                <div id="published" class="tab-pane fade active in">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>{{ 'blogpost.list.post.title'|trans }}</th>
+                            <th>{{ 'blogpost.list.post.date'|trans }}</th>
+                            <th>{{ 'blogpost.list.post.extract'|trans }}</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for post in blogpostsPublished %}
+                            <tr>
+                                <td>{{ post.title }}</td>
+                                <td>
+                                    {% if post.published_at is defined %}
+                                        {{ post.published_at|date('d/m/Y H:i', "Europe/Paris") }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ post.content[:100] }}</td>
+                                <td><a href="{{ path('postsShow',{'id':post.id}) }}" class="btn btn-success"> <span
+                                                class="glyphicon glyphicon-eye-open"></span> </a></td>
+                                <td><a href="{{ path('postsDelete',{'id':post.id}) }}" class="btn btn-danger"> <span
+                                                class="glyphicon glyphicon-trash"></span> </a></td>
+                            </tr>
+                        {% else %}
+                            <td></td>
+                            <td>{{ 'blogpost.list.post.empty'|trans }}</td>
+                            <td></td>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div id="notpublished" class="tab-pane fade">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>{{ 'blogpost.list.post.title'|trans }}</th>
+                            <th>{{ 'blogpost.list.post.extract'|trans }}</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for post in blogpostsNotPublished %}
+                            <tr>
+                                <td>{{ post.title }}</td>
+                                <td>{{ post.content[:100] }}</td>
+                                <td><a href="{{ path('postsShow',{'id':post.id}) }}" class="btn btn-success"> <span
+                                                class="glyphicon glyphicon-eye-open"></span> </a></td>
+                                <td><a href="{{ path('postsDelete',{'id':post.id}) }}" class="btn btn-danger"> <span
+                                                class="glyphicon glyphicon-trash"></span> </a></td>
+                            </tr>
+                        {% else %}
+                            <td></td>
+                            <td>{{ 'blogpost.list.post.empty'|trans }}</td>
+                            <td></td>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

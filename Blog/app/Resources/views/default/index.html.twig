@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'homepage.title'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% for post in blogpostsPublished %}
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1 style="text-align: center">{{ post.title }}</h1>
+            {% if post.cover is not null %}
+                <div class="container">
+                    <a href="{{ path('postsShow',{'id':post.id}) }}"> <img class="img-cover" src="{{ asset('img/cover/' ~ post.cover) }}"/></a>
+                </div>
+            {% endif %}
+            <div class="panel-body">
+                <p style="text-align: right">{{ post.published_at|date('d/m/Y H:i', "Europe/Paris") }}</p>
+                <p>{{ post.content[:200] }}</p>
+                <p style="text-align: right"><span class="label label-primary">{{ 'homepage.post.comment.number'|transchoice(post.comments|length, {'%count%' : post.comments|length}) }}</span></p>
+                <p style="text-align: right"><a href="{{ path('postsShow',{'id':post.id}) }}"> {{ 'homepage.post.readmore'|trans }}</span> </a>
+                </p>
+            </div>
+        </div>
+    {% else %}
+        {{ 'homepage.post.empty'|trans }}
+    {% endfor %}
+
+
+{% endblock %}
+
+{% block contact %} {{ include('element/contact.html.twig') }} {% endblock %}
